@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import random
-import string
 from datetime import datetime
 import os
 
@@ -11,7 +10,8 @@ def mine():
 	word = ''
 	i = 0
 	while word is not 'penis':
-		word = ''.join(random.choice(string.ascii_lowercase) for x in range(5))
+		word = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for x in range(5))
+		#print(str(i) + ' ' + word)
 		i += 1
 		if (i % 10000) == 0: # every 10.000 run
 			try: # ZeroDivision error workaround
