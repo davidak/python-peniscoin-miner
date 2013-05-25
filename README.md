@@ -1,8 +1,6 @@
 Python Peniscoin Miner
 ======================
 
-a basic peniscoin miner in python.
-
 Peniscoins are similar to Bitcoins.
 Both are using a secure SHA-256 hashing algorithm for generating the coins.
 
@@ -16,9 +14,9 @@ python3 miner.py
 example output
 
 ```
-2013-05-25 05:24:09 64.70 MHash/s generated 2 Peniscoins in 203.245 seconds
+2013-05-25 05:24:09 64.70 MHash/s 2 Peniscoins mined in 203.245 seconds
 ```
 
-im getting 65 MHash/s on a intel i7 (so far it uses only one core)
+im getting 65 MHash/s on a Intel i7 (so far it uses only one core).
 
-more features like multithreading, opencl and a mining pool are planned
+more features like multithreading, opencl and a mining pool are planned.
