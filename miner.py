@@ -23,11 +23,11 @@ def mine():
 				print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' ' + str(hashes) + ' Hash/s runs ' + str(seconds) + ' seconds')
 			except:
 				print('Error: computing performance data failed')
-		#print(str(i) + ' ' + word)
 	
 	end = datetime.now()
 	timediff = end - start
 	seconds = timediff.seconds # seconds the programm finally run
-	print('generated 1 PC in ' + str(seconds) + ' seconds. averange speed was ' + str(hashes) + ' Hash/s')
+	os.system('cls' if os.name=='nt' else 'clear') # Unix and Windows clear screen
+	print('generated 1 Peniscoin in ' + str(seconds) + ' seconds. averange speed was ' + str(hashes) + ' Hash/s\n')
 
 mine()
