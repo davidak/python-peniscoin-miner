@@ -19,22 +19,19 @@ def mine():
 			#print(str(i) + ' ' + word)
 			i += 1
 			if (i % 10000) == 0: # every 10.000 run
-				try: # ZeroDivision error workaround
-					now = time.clock()
-					seconds = now - start # seconds the programm run
-					hashes =  int(i / seconds)
-					print(hashes)
-					if hashes > 1000000:
-						hashes = '{0:.2f} GHash/s'.format(hashes / 1000000)
-					elif hashes > 1000:
-						hashes = '{0:.2f} MHash/s'.format(hashes / 1000)
-					else:
-						hashes = '{0:.0f} Hash/s'.format(hashes / 1000)
+				now = time.clock()
+				seconds = now - start # seconds the programm run
+				hashes =  int(i / seconds) # hashes / seconds
+				if hashes > 1000000:
+					hashes = '{0:.2f} GHash/s'.format(hashes / 1000000)
+				elif hashes > 1000:
+					hashes = '{0:.2f} MHash/s'.format(hashes / 1000)
+				else:
+					hashes = '{0} Hash/s'.format(hashes)
 
-					os.system('cls' if os.name=='nt' else 'clear') # Unix and Windows clear screen
-					print(time.strftime("%Y-%m-%d %H:%M:%S") + ' ' + str(hashes) + ' generated ' + str(coins) + ' Peniscoins in ' + '{0:.{1}f}'.format(seconds, 3) + ' seconds')
-				except:
-					print('Error: computing performance data failed')
+				os.system('cls' if os.name=='nt' else 'clear') # Unix and Windows clear screen
+				print(time.strftime('%Y-%m-%d %H:%M:%S ') + hashes + ' ' + str(coins) + ' Peniscoins mined in ' + '{0:.{1}f}'.format(seconds, 3) + ' seconds')
+
 			#if (i > 1000000): # test succesfull generation
 			#	word = hashlib.sha256('penis'.encode('utf-8')).hexdigest()
 		
