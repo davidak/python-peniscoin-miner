@@ -2,15 +2,19 @@
 # -*- coding: utf-8 -*-
 
 import random
+import string
 from datetime import datetime
+import hashlib
 import os
 
 def mine():
 	start = datetime.now()
+	#key = hashlib.sha256('penis'.encode('utf-8')).hexdigest()
+	key = 'f6952d6eef555ddd87aca66e56b91530222d6e318414816f3ba7cf5bf694bf0f'
 	word = ''
 	i = 0
-	while word is not 'penis':
-		word = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for x in range(5))
+	while word != key:
+		word = hashlib.sha256(''.join(random.choice(string.ascii_lowercase) for x in range(5)).encode('utf-8')).hexdigest()
 		#print(str(i) + ' ' + word)
 		i += 1
 		if (i % 10000) == 0: # every 10.000 run
@@ -23,6 +27,9 @@ def mine():
 				print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ' ' + str(hashes) + ' Hash/s runs ' + str(seconds) + ' seconds')
 			except:
 				print('Error: computing performance data failed')
+		#if (i > 1000000):
+		#	word = hashlib.sha256('penis'.encode('utf-8')).hexdigest()
+		#	print(word)
 	
 	end = datetime.now()
 	timediff = end - start
