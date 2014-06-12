@@ -15,11 +15,10 @@ class Miner(object):
 	"""
 	def __init__(self):
 		# read balance and last hash from wallet.dat
-		for i in range(10):
-			try:
-				self.load_wallet()
-			except IOError: # if wallet.dat don't exists
-				self.create_wallet()
+		try:
+			self.load_wallet()
+		except IOError: # if wallet.dat don't exists
+			self.create_wallet()
 
 	def __str__(self):
 		return self.hashes + ', ' + self.seconds + ' Sekunden'
@@ -35,7 +34,7 @@ class Miner(object):
 			self.last_hash = pickle.load(f)
 
 	def create_wallet(self):
-		self.save_wallet(0, 'f6952d6eef555ddd87aca66e56b91530222d6e318414816f3ba7cf5bf694bf0f')
+		self.save_wallet(0, 'f6952d6eef555ddd87aca66e56b91530222d6e318414816f3ba7cf5bf694bf0f') # bootstrap hash
 
 	def mine(self):
 		self.start = time.clock()
@@ -58,9 +57,6 @@ class Miner(object):
 
 				os.system('cls' if os.name=='nt' else 'clear') # Unix and Windows clear screen
 				print(time.strftime('%Y-%m-%d %H:%M:%S ') + self.hashes + ' ' + str(self.coins) + ' Peniscoins mined in ' + '{0:.{1}f}'.format(self.seconds, 3) + ' seconds')
-
-			#if (self.i % 1000000) == 0: # test succesfull generation
-			#	self.current_hash = hashlib.sha256('penis'.encode('utf-8')).hexdigest()
 
 			if self.current_hash == self.last_hash:
 				self.coins += 1
